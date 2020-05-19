@@ -1,14 +1,14 @@
 package com.codecool.onlineshop.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import com.codecool.onlineshop.UI;
 
-public  class Dao<T> {
+import java.sql.*;
+
+public class Dao<T> {
 
     protected Connection connection;
     protected Statement statement;
+    private UI ui;
 
     public void connectToDB() {
         try {
@@ -21,5 +21,15 @@ public  class Dao<T> {
             System.out.println("Could not connect to DB " + e.getMessage());
         }
         System.out.println("connected to db"); //for testing
+    }
+
+    public void printTableFromDB(String query) {
+        connectToDB();
+        try {
+            ResultSet resultSet = statement.executeQuery(query);
+            ui.printTableFromDB(resultSet);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
