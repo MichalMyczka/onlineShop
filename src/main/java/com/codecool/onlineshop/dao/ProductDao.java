@@ -18,7 +18,10 @@ public class ProductDao extends DataBaseDao {
     }
 
     @Override
-    public void printRowFromDB() {
-
+    public void addItemToDB(String[] values) {
+        String[] columns = {"name", "price", "quantity",
+                "category_id", "is_available"};
+        values[0] = String.format("'%s'", values[0]);
+        insert("products", columns, values);
     }
 }

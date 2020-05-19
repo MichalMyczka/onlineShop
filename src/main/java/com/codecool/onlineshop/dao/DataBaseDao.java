@@ -24,7 +24,7 @@ public abstract class DataBaseDao implements Dao {
     }
 
     public void printFromDB(String table, String columns, String condition) {
-        String where = condition.isEmpty() ? "" : "WHERE" + condition;
+        String where = condition.isEmpty() ? "" : "WHERE " + condition;
         String query = String.format("SELECT %s FROM %s %s;", columns, table, where);
         printFromDB(query);
     }
@@ -39,5 +39,19 @@ public abstract class DataBaseDao implements Dao {
             e.printStackTrace();
         }
     }
+    protected void insert(String table, String[] columns, String[] values) {
+        String columnsQuery = String.join(",", columns);
+        String valuesQuery = String.join(",", values);
+        String query = String.format("INSERT INTO %s (%s) VALUES (%s);",
+                table, columnsQuery, valuesQuery);
+        connectToDB();
+        try {
+            statement.execute(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public abstract void addItemToDB(String[] values);
 
 }
