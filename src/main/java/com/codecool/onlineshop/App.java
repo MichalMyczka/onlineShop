@@ -4,7 +4,7 @@ import com.codecool.onlineshop.dao.*;
 public class App {
     public static void main(String[] args) {
 
-        Dao dao = new Dao();
-        dao.printFromDB("products", "*", "");
+        ProductDao productDao = new ProductDao();
+        productDao.printFromDB("products", "*", "");
     }
 }
