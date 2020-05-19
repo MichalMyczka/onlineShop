@@ -10,6 +10,4 @@ public class UI {
     public void printTableFromDB(ResultSet resultSet) throws SQLException {
         System.out.println(FlipTableConverters.fromResultSet(resultSet));
     }
-
-
 }

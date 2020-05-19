@@ -8,7 +8,7 @@ public class Dao<T> {
 
     protected Connection connection;
     protected Statement statement;
-    private UI ui;
+    private final UI ui = new UI();
 
     public void connectToDB() {
         try {
@@ -23,11 +23,17 @@ public class Dao<T> {
         System.out.println("connected to db"); //for testing
     }
 
-    public void printTableFromDB(String query) {
+    public void printFromDB(String table, String columns, String condition) {
+        String where = condition.isEmpty() ? "" : "WHERE" + condition;
+        String query = String.format("SELECT %s FROM %s %s;", columns, table, where);
+        printFromDB(query);
+    }
+
+    public void printFromDB(String query) {
         connectToDB();
         try {
-            ResultSet resultSet = statement.executeQuery(query);
-            ui.printTableFromDB(resultSet);
+            ResultSet results = statement.executeQuery(query);
+            ui.printTableFromDB(results);
         } catch (SQLException e) {
             e.printStackTrace();
         }
