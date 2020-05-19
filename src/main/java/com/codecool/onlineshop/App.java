@@ -6,6 +6,5 @@ public class App {
 
         Dao dao = new Dao();
         dao.printFromDB("products", "*", "");
-
     }
 }
