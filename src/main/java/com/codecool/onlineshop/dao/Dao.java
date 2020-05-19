@@ -2,6 +2,7 @@ package com.codecool.onlineshop.dao;
 
 public interface Dao{
 
-    public void connectToDB();
-    public void printRowFromDB();
+    void connectToDB();
+    void printFromDB(String table, String columns, String condition);
+    void addItemToDB(String[] values);
 }
