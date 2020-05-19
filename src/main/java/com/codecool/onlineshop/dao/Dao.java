@@ -34,6 +34,7 @@ public class Dao<T> {
         try {
             ResultSet results = statement.executeQuery(query);
             ui.printTableFromDB(results);
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
