@@ -1,10 +1,15 @@
 package com.codecool.onlineshop.dao;
 
+
+import com.codecool.onlineshop.view.UI;
+
 public class ProductDao extends DataBaseDao {
 
+    UI ui = new UI();
+
     @Override
-    public void printFromDB(String query) {
-        super.printFromDB(query);
+    public void printFromDB(String query, String message) {
+        super.printFromDB(query, message);
     }
 
     @Override
@@ -14,7 +19,8 @@ public class ProductDao extends DataBaseDao {
 
     @Override
     public void printFromDB(String table, String columns, String condition) {
-        super.printFromDB(table, columns, condition);
+        String message = ui.addProductPrintMsg();
+        super.printFromDB(table, columns, condition, message);
     }
 
     @Override
@@ -23,5 +29,11 @@ public class ProductDao extends DataBaseDao {
                 "category_id", "is_available"};
         values[0] = String.format("'%s'", values[0]);
         insert("products", columns, values);
+    }
+
+    @Override
+    public void printAll() {
+        String message = "All products:";
+        printFromDB("SELECT * FROM products;", message);
     }
 }
