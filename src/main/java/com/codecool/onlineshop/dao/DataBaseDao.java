@@ -1,6 +1,6 @@
 package com.codecool.onlineshop.dao;
 
-import com.codecool.onlineshop.UI;
+import com.codecool.onlineshop.view.UI;
 
 import java.sql.*;
 
@@ -23,17 +23,17 @@ public abstract class DataBaseDao implements Dao {
         System.out.println("connected to db"); //for testing
     }
 
-    public void printFromDB(String table, String columns, String condition) {
+    public void printFromDB(String table, String columns, String condition, String message) {
         String where = condition.isEmpty() ? "" : "WHERE " + condition;
         String query = String.format("SELECT %s FROM %s %s;", columns, table, where);
-        printFromDB(query);
+        printFromDB(query, message);
     }
 
-    public void printFromDB(String query) {
+    public void printFromDB(String query, String message) {
         connectToDB();
         try {
             ResultSet results = statement.executeQuery(query);
-            ui.printTableFromDB(results);
+            ui.printTableFromDB(results, message);
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -51,6 +51,9 @@ public abstract class DataBaseDao implements Dao {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public abstract void printAll();
 
     public abstract void addItemToDB(String[] values);
 

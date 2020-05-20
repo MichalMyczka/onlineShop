@@ -6,5 +6,6 @@ public class App {
 
         ProductDao productDao = new ProductDao();
         productDao.printFromDB("products", "*", "");
+        productDao.printAll();
     }
 }
