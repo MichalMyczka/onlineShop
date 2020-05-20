@@ -1,4 +1,4 @@
-package com.codecool.onlineshop;
+package com.codecool.onlineshop.model;
 
 public enum userRole {
     ADMIN(1), CUSTOMER(2);
