@@ -19,7 +19,7 @@ public abstract class MenuController {
     protected Map<String, Runnable> productsMenuMap;
 
 
-    private MenuController(User user, UI ui) {
+    protected MenuController(User user, UI ui) {
         this.user = user;
         this.ui = ui;
         this.productDao = new ProductDao();
