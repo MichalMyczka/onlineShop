@@ -21,6 +21,7 @@ public class CustomerMenuController extends MenuController {
         productDao = new ProductDao();
         orderDao = new OrderDao();
         addToProductsMenuMap();
+        createMainMenuMap();
     }
 
     private void addToProductsMenuMap() {
@@ -28,17 +29,24 @@ public class CustomerMenuController extends MenuController {
         productsMenuMap.put("9", this::showCart);
     }
 
+    private void createMainMenuMap() {
+        mainMenuMap.put("1", this::userProfile);
+        mainMenuMap.put("2", this::getOrdersByUserId);
+        mainMenuMap.put("3", this::browseProducts);
+        mainMenuMap.put("9", this::showCart);
+    }
+
     private void addToCart() {
         System.out.println("Chosen option - add product to cart");
         String id = ui.takeUserInput("Enter product id to add to cart: ");
-        int amount = ui.getNumericInput("Enter amount: ", 1, 10);
-
+        String inputAmount = ui.takeUserInput("Enter amount: ");
+        int amount = Integer.parseInt(inputAmount);
         List<Product> productList = productDao.getProducts("SELECT * FROM Products WHERE " +
                 "id =" + id + ";");
-
         if(productList.isEmpty()) {
             ui.getEmptyInput("No product found.");
             return;
+
         }
         if (productList.get(0).getQuantity() < amount) {
             ui.getEmptyInput("Not enough products.");
@@ -47,10 +55,16 @@ public class CustomerMenuController extends MenuController {
         for (int i = 0; i < amount; i++) {
             this.cart.addToCart(productList.get(0));
         }
+        System.out.println("Product added to cart");
+        printCart();
+    }
+
+    private void printCart() {
+        ui.printCart(cart.getProductsInCart());
+        //to do
     }
 
     private void showCart() {
-        System.out.println("work in progress");
         //to do
     }
 }

@@ -19,6 +19,7 @@ public class LoginController {
         logInOrRegister();
         User user = logIn();
         setMenuController(user);
+        mainMenuChoice(user);
     }
 
     private User loginTry(String email, String password) {
@@ -67,5 +68,9 @@ public class LoginController {
                 registered = true;
                 }
             }while (!registered);
+    }
+    private void mainMenuChoice(User loggedUser) {
+        menuController.handleMenu(menuController.getMainMenuMap(),
+                loggedAsAdmin ? ui::displayAdminMainMenu : ui::displayCustomerMainMenu);
     }
 }

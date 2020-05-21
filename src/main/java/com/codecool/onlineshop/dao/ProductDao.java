@@ -53,7 +53,7 @@ public class ProductDao extends DataBaseDao<Product> {
 
     @Override
     public void updateItem(String id, String column, String newValue) {
-        newValue = column.toLowerCase().equals("name") ? String.format("'%s", newValue) : newValue;
+        newValue = column.toLowerCase().equals("name") ? String.format("'%s'", newValue) : newValue;
         updateById("products", id, column, newValue);
     }
 

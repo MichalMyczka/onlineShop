@@ -41,13 +41,14 @@ public abstract class DataBaseDao<T> implements Dao {
         }
     }
     protected void insert(String table, String[] columns, String[] values) {
-        String columnsQuery = String.join(",", columns);
-        String valuesQuery = String.join(",", values);
-        String query = String.format("INSERT INTO %s (%s) VALUES (%s);",
-                table, columnsQuery, valuesQuery);
+        String columnsAsQuery = String.join(",", columns);
+        String valuesAsQuery = String.join(",", values);
+        String query = String.format("INSERT INTO %s (%s) VALUES (%s);", table,
+                columnsAsQuery, valuesAsQuery);
         connectToDB();
         try {
             statement.execute(query);
+//            statement.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -66,7 +67,8 @@ public abstract class DataBaseDao<T> implements Dao {
         String query = String.format("UPDATE %s SET %s = %s WHERE %s;", table, column, newValue, condition);
         connectToDB();
         try {
-            statement.executeQuery(query);
+            System.out.println("imhere");
+            statement.executeUpdate(query);
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -76,7 +78,7 @@ public abstract class DataBaseDao<T> implements Dao {
         String query = String.format("DELETE FROM %s WHERE Id = %s;", table, id);
         connectToDB();
         try {
-            statement.executeQuery(query);
+            statement.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
         }
