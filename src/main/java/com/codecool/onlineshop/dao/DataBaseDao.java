@@ -48,7 +48,6 @@ public abstract class DataBaseDao<T> implements Dao {
         connectToDB();
         try {
             statement.execute(query);
-//            statement.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
         }
