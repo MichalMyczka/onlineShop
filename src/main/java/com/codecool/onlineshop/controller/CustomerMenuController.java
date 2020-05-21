@@ -21,13 +21,11 @@ public class CustomerMenuController extends MenuController {
         productDao = new ProductDao();
         orderDao = new OrderDao();
         addToProductsMenuMap();
-
     }
 
     private void addToProductsMenuMap() {
         productsMenuMap.put("4", this::addToCart);
         productsMenuMap.put("9", this::showCart);
-
     }
 
     private void addToCart() {
