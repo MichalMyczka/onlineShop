@@ -45,7 +45,7 @@ public class ProductDao extends DataBaseDao<Product> {
         updateById("products", id, column, newValue);
     }
 
-
+    @Override
     public void print(String column, String condition) {
         printFromDB("products", column, condition);
     }
