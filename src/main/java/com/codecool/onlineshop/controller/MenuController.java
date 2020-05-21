@@ -6,8 +6,6 @@ import com.codecool.onlineshop.dao.UserDao;
 import com.codecool.onlineshop.model.Admin;
 import com.codecool.onlineshop.model.User;
 import com.codecool.onlineshop.view.UI;
-
-import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Map;
 

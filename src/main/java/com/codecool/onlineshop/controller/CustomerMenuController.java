@@ -14,7 +14,6 @@ public class CustomerMenuController extends MenuController {
     private final ProductDao productDao;
     private final OrderDao orderDao;
 
-
     public CustomerMenuController(User user, UI ui) {
         super(user, ui);
         cart = new Cart();

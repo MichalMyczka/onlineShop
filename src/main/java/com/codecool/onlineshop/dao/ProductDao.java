@@ -1,17 +1,12 @@
 package com.codecool.onlineshop.dao;
 
-
 import com.codecool.onlineshop.model.Product;
-import com.codecool.onlineshop.view.UI;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDao extends DataBaseDao<Product> {
-
-    UI ui = new UI();
 
     public List<Product> getProducts(String query) {
         List<Product> products = new ArrayList<>();

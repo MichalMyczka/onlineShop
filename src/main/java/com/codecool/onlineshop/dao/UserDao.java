@@ -5,8 +5,6 @@ import com.codecool.onlineshop.model.Admin;
 import com.codecool.onlineshop.model.Customer;
 import com.codecool.onlineshop.model.User;
 import com.codecool.onlineshop.model.userRole;
-
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
