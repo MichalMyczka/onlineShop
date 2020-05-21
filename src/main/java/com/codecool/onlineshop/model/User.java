@@ -1,7 +1,7 @@
 package com.codecool.onlineshop.model;
 
 public class User {
-    private final int id;
+    private int id = 1;
     private final String email;
     private final String password;
     private final String name;
@@ -13,6 +13,7 @@ public class User {
         this.password = password;
         this.name = name;
         this.surname = surname;
+        setId();
     }
 
     public int getId() {
@@ -32,5 +33,10 @@ public class User {
 
     public String getSurname() {
         return surname;
+    }
+
+
+    public void setId(){
+        this.id = id ++;
     }
 }
