@@ -6,6 +6,7 @@ import com.codecool.onlineshop.model.Customer;
 import com.codecool.onlineshop.model.User;
 import com.codecool.onlineshop.model.userRole;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class UserDao extends DataBaseDao<User>{
         try {
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                int id = resultSet.getInt("id");
+                int id = resultSet.getInt("user_id");
                 String name = resultSet.getString("name");
                 String surname = resultSet.getString("surname");
                 String email = resultSet.getString("email");
@@ -50,10 +51,11 @@ public class UserDao extends DataBaseDao<User>{
     @Override
     public void addItemToDB(String[] values) {
         String[] columns = {"name", "surname", "email", "password", "role"};
-        for (int i = 0; i < 5; i++) {
-            values[i] = String.format("'%s", values[i]);
+        for (int i = 0; i < columns.length; i++) {
+            values[i] = String.format("'%s'", values[i]);
         }
-        insert("users", columns, values);
+        String table = "users";
+        insert(table, columns, values);
     }
 
     @Override

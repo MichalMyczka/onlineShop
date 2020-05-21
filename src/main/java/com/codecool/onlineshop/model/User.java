@@ -1,11 +1,14 @@
 package com.codecool.onlineshop.model;
 
+import com.codecool.onlineshop.dao.ProductDao;
+
 public class User {
-    private final int id;
+    private int id;
     private final String email;
     private final String password;
     private final String name;
     private final String surname;
+    private final ProductDao productDao;
 
     public User(int id, String email, String password, String name, String surname) {
         this.id = id;
@@ -13,6 +16,8 @@ public class User {
         this.password = password;
         this.name = name;
         this.surname = surname;
+        productDao = new ProductDao();
+
     }
 
     public int getId() {
@@ -32,5 +37,9 @@ public class User {
 
     public String getSurname() {
         return surname;
+    }
+
+    private void incrementID() {
+        this.id++;
     }
 }

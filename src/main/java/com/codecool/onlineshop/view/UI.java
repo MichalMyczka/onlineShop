@@ -42,7 +42,26 @@ public class UI {
         return Integer.parseInt(userInput);
     }
 
-    public String getStringInput() {
+    public String takeUserInput(String message) {
+        System.out.println(message);
+        boolean validInput = true;
+        String userInput;
+        do {
+            if(!validInput) {
+                System.out.println("Please enter at least one character");
+            }
+            validInput = false;
+            userInput = scanner.next();
+            if(!userInput.equals("")) {
+                validInput = true;
+            }
+        } while (!validInput);
+        System.out.println(userInput);
+        return userInput;
+    }
+
+    public String getStringInput(String message) {
+        System.out.println("test 1");
         String userInputString;
         Scanner scanner = new Scanner(System.in);
         userInputString = scanner.nextLine();
