@@ -28,11 +28,11 @@ public class OrderDao extends DataBaseDao<Order> {
                 String paymentDateString = resultSet.getString("payment_date");
                 LocalDateTime paymentDate;
                 try {
-                    paymentDate = LocalDateTime.parse(paymentDate);
+                    paymentDate = LocalDateTime.parse(paymentDateString);
                 } catch (java.time.format.DateTimeParseException e) {
                     paymentDate = null;
                 }
-                Order order = new Order(id,basketProducts, customerId, creationDate, paymentDate, status);
+                Order order = new Order(id,basketProducts, customerId, creationDate, paymentDate, orderStatus);
                 orders.add(order);
             }
             resultSet.close();
@@ -43,9 +43,7 @@ public class OrderDao extends DataBaseDao<Order> {
         }
         return orders;
     }
-
-
-
+    
     @Override
     public void printAll() {
         printFromDB("SELECT * FROM orders;");
