@@ -38,6 +38,11 @@ public class ProductDao extends DataBaseDao<Product> {
         return  products;
     }
 
+    public List<Product> getBasketProducts(int orderId) {
+        String query = String.format("SELECT * FROM basket LEFT JOIN products ON product_id = " +
+                "id WHERE order_id = %s;", orderId);
+        return getProducts(query);
+    }
 
     @Override
     public void updateItem(String id, String column, String newValue) {
