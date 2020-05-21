@@ -11,5 +11,6 @@ public class App {
         productDao.printFromDB("products","*", "");
         productDao.printAll();
         List<Product> products = productDao.getProducts("SELECT * FROM products;");
+        productDao.print("*", "id = 1");
     }
 }

@@ -9,8 +9,7 @@ import java.util.Scanner;
 
 public class UI {
 
-    public void printTableFromDB(ResultSet resultSet, String message) throws SQLException {
-        System.out.println(message);
+    public void printTableFromDB(ResultSet resultSet) throws SQLException {
         System.out.println(FlipTableConverters.fromResultSet(resultSet));
     }
 
@@ -77,26 +76,26 @@ public class UI {
     }
 
 
-
-    public void displayMenu() {
-        clearScreen();
-        boolean isRunning = true;
-        welcomeScreen();
-        int userInput = getNumericInput("", 0, 4);
-        while (isRunning) {
-            if (userInput == 1) {
-
-            } else if (userInput == 2) {
-
-            } else if (userInput == 3) {
-
-            } else if (userInput == 0) {
-                exitProgram();
-            } else {
-
-            }
-        }
-    }
+//
+//    public void displayMenu() {
+//        clearScreen();
+//        boolean isRunning = true;
+//        welcomeScreen();
+//        int userInput = getNumericInput("", 0, 4);
+//        while (isRunning) {
+//            if (userInput == 1) {
+//
+//            } else if (userInput == 2) {
+//
+//            } else if (userInput == 3) {
+//
+//            } else if (userInput == 0) {
+//                exitProgram();
+//            } else {
+//
+//            }
+//        }
+//    }
 
     public int generateRandomNumber() {
         Random rand = new Random();
