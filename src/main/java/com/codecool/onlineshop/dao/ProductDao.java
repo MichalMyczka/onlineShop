@@ -38,23 +38,16 @@ public class ProductDao extends DataBaseDao<Product> {
         return  products;
     }
 
-    public void updateProduct(String id, String column, String newValue) {
+
+    @Override
+    public void updateItem(String id, String column, String newValue) {
         newValue = column.toLowerCase().equals("name") ? String.format("'%s", newValue) : newValue;
         updateById("products", id, column, newValue);
     }
 
-    @Override
-    public void printFromDB(String query) {
-        super.printFromDB(query);
-    }
 
     public void print(String column, String condition) {
         printFromDB("products", column, condition);
-    }
-
-    @Override
-    public void connectToDB() {
-        super.connectToDB();
     }
 
     @Override
