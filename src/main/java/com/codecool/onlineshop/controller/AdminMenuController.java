@@ -22,6 +22,10 @@ public class AdminMenuController extends MenuController {
 
     private void addToProductsMenuMap() {
         productsMenuMap.put("4", this::addProduct);
+        productsMenuMap.put("5", this::editProduct);
+        productsMenuMap.put("6", this::removeProduct);
+        productsMenuMap.put("7", this::addCategory);
+        productsMenuMap.put("8", this::printAllCategories);
     }
 
     private void addProduct() {
@@ -34,5 +38,30 @@ public class AdminMenuController extends MenuController {
                 " 1 - available");
         String[] values = { name, price, quantity, categoryID, isAvailable };
         productDao.addItemToDB(values);
+    }
+
+    private void editProduct() {
+        System.out.println("Chosen option - edit product");
+        String id = ui.takeUserInput("Enter product id: ");
+        String column = ui.takeUserInput("Enter product column: ");
+        String newValue = ui.takeUserInput("Enter new value: ");
+        productDao.updateItem(id, column, newValue);
+    }
+
+    private void removeProduct() {
+        System.out.println("Chosen option - remove product");
+        String id = ui.takeUserInput("Enter product id: ");
+        productDao.removeById("products", id);
+    }
+
+    private void addCategory() {
+        System.out.println("Chosen option - add category");
+        String name = ui.takeUserInput("Enter category name: ");
+        //implement add category in productDao
+    }
+
+    private void printAllCategories() {
+        System.out.println("Chosen option - print all categories");
+        userDao.printFromDB("categories", "*", "");
     }
 }
