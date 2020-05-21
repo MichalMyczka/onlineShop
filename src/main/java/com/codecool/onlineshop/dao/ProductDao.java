@@ -38,6 +38,13 @@ public class ProductDao extends DataBaseDao<Product> {
         return  products;
     }
 
+    public void addCategory(String categoryName) {
+        categoryName = "'" + categoryName + "'";
+        String[] values = {categoryName};
+        String[] columns = {"name"};
+        insert("categories", columns, values);
+    }
+
     public List<Product> getBasketProducts(int orderId) {
         String query = String.format("SELECT * FROM basket LEFT JOIN products ON product_id = " +
                 "id WHERE order_id = %s;", orderId);

@@ -57,7 +57,7 @@ public class AdminMenuController extends MenuController {
     private void addCategory() {
         System.out.println("Chosen option - add category");
         String name = ui.takeUserInput("Enter category name: ");
-        //implement add category in productDao
+        productDao.addCategory(name);
     }
 
     private void printAllCategories() {
