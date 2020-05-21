@@ -64,7 +64,7 @@ public class UI {
     }
 
     public void displayBrowseUsersMenu() {
-        print(new String[] { " Browse Users Menu",
+        print(new String[] { "Browse Users Menu",
                 "(1) Show all users",
                 "(2) Browse users by id",
                 "(3) Browse users by column",
@@ -73,7 +73,7 @@ public class UI {
     }
 
     public void displayAdminMainMenu() {
-        print(new String[] { " Admin Main Menu",
+        print(new String[] { "Admin Main Menu",
                 "(1) Browse products",
                 "(2) Browse users",
                 "(3) Browse orders",
@@ -81,7 +81,7 @@ public class UI {
     }
 
     public void displayCustomerMainMenu() {
-        print(new String[] { " Customer Main Menu",
+        print(new String[] { "Customer Main Menu",
                 "(1) Show profile",
                 "(2) Show order history",
                 "(3) Browse products",
@@ -90,7 +90,7 @@ public class UI {
     }
 
     public void displayAdminBrowseProductsMenu() {
-        print(new String[] { " Admin Browse Products Menu",
+        print(new String[] { "Admin Browse Products Menu",
                 "(1) Show all products",
                 "(2) Browse by category",
                 "(3) Find products by column",
@@ -103,7 +103,7 @@ public class UI {
     }
 
     public void displayCustomerBrowseProductsMenu() {
-        print(new String[] { " Customer Browse Products Menu",
+        print(new String[] { "Customer Browse Products Menu",
                 "(1) Show all products",
                 "(2) Browse by category",
                 "(3) Find products by column",
