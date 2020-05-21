@@ -1,7 +1,7 @@
 package com.codecool.onlineshop;
+import com.codecool.onlineshop.controller.LoginController;
 import com.codecool.onlineshop.dao.*;
 import com.codecool.onlineshop.model.Product;
-import com.codecool.onlineshop.controller.UserRegistration;
 
 import com.codecool.onlineshop.view.UI;
 
@@ -20,8 +20,7 @@ public class App {
         List<Product> products = productDao.getProducts("SELECT * FROM products;");
         productDao.print("*", "id = 1");
         userDao.printAll();
-
-
+        LoginController loginController = new LoginController();
 
     }
 }
