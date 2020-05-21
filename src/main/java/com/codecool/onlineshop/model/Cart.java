@@ -1,13 +1,14 @@
 package com.codecool.onlineshop.model;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Cart {
 
     private final Map<Product, Integer> productsInCart;
 
-    public Cart(Map<Product, Integer> productsInCart) {
-        this.productsInCart = productsInCart;
+    public Cart() {
+        productsInCart = new HashMap<>();
     }
 
     public Map<Product, Integer> getProductsInCart() {
@@ -15,15 +16,19 @@ public class Cart {
     }
 
     public void addToCart(Product product) {
-        //to do
+        productsInCart.merge(product, 1, Integer::sum);
     }
 
     public void editCart(Product product, int amount) {
-        //to do
+        productsInCart.put(product, amount);
     }
 
     public void emptyCart() {
         productsInCart.clear();
+    }
+
+    public void clearOnceNoProducts() {
+        productsInCart.entrySet().removeIf(entry -> entry.getValue() <= 0);
     }
 
 }

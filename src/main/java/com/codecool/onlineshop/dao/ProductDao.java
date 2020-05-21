@@ -1,17 +1,12 @@
 package com.codecool.onlineshop.dao;
 
-
 import com.codecool.onlineshop.model.Product;
-import com.codecool.onlineshop.view.UI;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDao extends DataBaseDao<Product> {
-
-    UI ui = new UI();
 
     public List<Product> getProducts(String query) {
         List<Product> products = new ArrayList<>();
@@ -38,6 +33,13 @@ public class ProductDao extends DataBaseDao<Product> {
         return  products;
     }
 
+    public void addCategory(String categoryName) {
+        categoryName = "'" + categoryName + "'";
+        String[] values = {categoryName};
+        String[] columns = {"name"};
+        insert("categories", columns, values);
+    }
+
     public List<Product> getBasketProducts(int orderId) {
         String query = String.format("SELECT * FROM basket LEFT JOIN products ON product_id = " +
                 "id WHERE order_id = %s;", orderId);
@@ -46,7 +48,7 @@ public class ProductDao extends DataBaseDao<Product> {
 
     @Override
     public void updateItem(String id, String column, String newValue) {
-        newValue = column.toLowerCase().equals("name") ? String.format("'%s", newValue) : newValue;
+        newValue = column.toLowerCase().equals("name") ? String.format("'%s'", newValue) : newValue;
         updateById("products", id, column, newValue);
     }
 

@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UserRegistration {
+public class RegistrationController {
     private final UI ui;
 
-    public UserRegistration() {
+    public RegistrationController() {
         ui = new UI();
     }
 
