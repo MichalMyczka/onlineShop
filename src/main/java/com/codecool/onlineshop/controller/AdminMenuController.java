@@ -18,7 +18,6 @@ public class AdminMenuController extends MenuController {
         userDao = new UserDao();
         orderDao = new OrderDao();
         addToProductsMenuMap();
-
     }
 
     private void addToProductsMenuMap() {

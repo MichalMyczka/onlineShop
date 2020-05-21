@@ -11,12 +11,14 @@ public class LoginController {
     RegistrationController registrationController;
     private UI ui;
     private boolean loggedAsAdmin;
+    private MenuController menuController;
 
 
     public LoginController() {
         ui = new UI();
         logInOrRegister();
         User user = logIn();
+        setMenuController(user);
     }
 
     private User loginTry(String email, String password) {
@@ -25,11 +27,10 @@ public class LoginController {
         return users.isEmpty() ? null : users.get(0);
     }
 
-    //to do
-//    private void setMenuController(User user) {
-//        menuController = loggedAsAdmin ? new AdminMenuController(user, ui) :
-//                new CustomerMenuController(user, ui);
-//    }
+    private void setMenuController(User user) {
+        menuController = loggedAsAdmin ? new AdminMenuController(user, ui) :
+                new CustomerMenuController(user, ui);
+    }
 
     private List<User> getSameUser(String email, String password) {
         return new UserDao().getUsers(

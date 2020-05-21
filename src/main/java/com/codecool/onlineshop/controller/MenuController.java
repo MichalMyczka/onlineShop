@@ -25,6 +25,7 @@ public abstract class MenuController {
         this.productDao = new ProductDao();
         this.userDao = new UserDao();
         this.orderDao = new OrderDao();
+        createProductsMenuMap();
     }
 
     private void createProductsMenuMap() {
