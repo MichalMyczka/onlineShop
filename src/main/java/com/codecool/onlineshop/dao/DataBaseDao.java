@@ -52,6 +52,35 @@ public abstract class DataBaseDao implements Dao {
         }
     }
 
+    protected void updateById(String table, String id, String column, String newValue) {
+        String condition = String.format("id = %s", id);
+        update(table, column, newValue, condition);
+    }
+
+    protected void update(String table, String column, String newValue, String condition) {
+        if (column.toLowerCase().equals("id")) {
+            System.out.println("Unable to change id");
+            return;
+        }
+        String query = String.format("UPDATE %s SET %s = %s WHERE %s;", table, column, newValue, condition);
+        connectToDB();
+        try {
+            statement.executeQuery(query);
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void removeById(String table, String id) {
+        String query = String.format("DELETE FROM %s WHERE Id = %s;", table, id);
+        connectToDB();
+        try {
+            statement.executeQuery(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public abstract void printAll();
 
