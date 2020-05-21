@@ -86,5 +86,6 @@ public abstract class DataBaseDao<T> implements Dao {
     public abstract void addItemToDB(String[] values);
     public abstract List<T> getAll();
     public abstract void updateItem(String id, String column, String newValue);
+    public abstract void print(String column, String condition);
 
 }
