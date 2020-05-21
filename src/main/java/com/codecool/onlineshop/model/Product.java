@@ -1,4 +1,4 @@
-package com.codecool.onlineshop;
+package com.codecool.onlineshop.model;
 
 public class Product {
 
