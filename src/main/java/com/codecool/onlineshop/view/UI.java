@@ -9,12 +9,9 @@ import java.util.Scanner;
 
 public class UI {
 
+    //m
     public void printTableFromDB(ResultSet resultSet) throws SQLException {
         System.out.println(FlipTableConverters.fromResultSet(resultSet));
-    }
-
-    public String addProductPrintMsg() {
-        return "Print from products";
     }
 
     Scanner scanner = new Scanner(System.in);
@@ -42,6 +39,7 @@ public class UI {
         return Integer.parseInt(userInput);
     }
 
+    //m
     public String takeUserInput(String message) {
         System.out.println(message);
         boolean validInput = true;
@@ -58,6 +56,19 @@ public class UI {
         } while (!validInput);
         System.out.println(userInput);
         return userInput;
+    }
+
+    //m
+    public void displayLogInOrRegisterMenu() {
+        print(new String[]{"Welcome to OnlineShop",
+                "(1) Login",
+                "(2) Register"});
+    }
+
+    public void print(String[] toPrint) {
+        for (String string : toPrint) {
+            System.out.println(string);
+        }
     }
 
     public String getStringInput(String message) {
