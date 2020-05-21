@@ -82,11 +82,9 @@ public abstract class DataBaseDao<T> implements Dao {
         }
     }
 
-    @Override
     public abstract void printAll();
-
     public abstract void addItemToDB(String[] values);
-
     public abstract List<T> getAll();
+    public abstract void updateItem(String id, String column, String newValue);
 
 }
