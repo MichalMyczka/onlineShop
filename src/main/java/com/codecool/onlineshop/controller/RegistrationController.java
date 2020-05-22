@@ -12,10 +12,10 @@ public class RegistrationController {
 
     public RegistrationController() {
         ui = new UI();
+        startRegistration();
     }
 
     public void startRegistration() {
-        inputUserData();
         inputUserData();
     }
 
@@ -55,5 +55,4 @@ public class RegistrationController {
     private String setRoleAsTwo() {
         return "2";
     }
-
 }

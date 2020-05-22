@@ -41,7 +41,6 @@ public class LoginController {
 
     private void createNewUser() {
         registrationController = new RegistrationController();
-        registrationController.startRegistration();
     }
 
     private User logIn() {
