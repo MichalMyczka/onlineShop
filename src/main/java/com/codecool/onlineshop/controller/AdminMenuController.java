@@ -85,7 +85,7 @@ public class AdminMenuController extends MenuController {
 
     private void printUsersByID() {
         String id = ui.takeUserInput("Enter user id: ");
-        userDao.print("*", "user_id = " + id);
+        userDao.print("*", "id = " + id);
     }
 
     private void createMainMenuMap() {
@@ -110,6 +110,5 @@ public class AdminMenuController extends MenuController {
     private void browseOrders() {
         // TO DO
         System.out.println("Work in progress");
-
     }
 }
